@@ -41,7 +41,7 @@ function removeProduct(event) {
 function createProduct() {
   const body = document.querySelector("tbody");
   const newProdName = document.getElementById("new-prod-name").value;
-  const newProdPrice = parseInt(document.getElementById("new-prod-price").value);
+  const newProdPrice = document.getElementById("new-prod-price").value;
 
   if(newProdName.length === 0) return alert("You didn't enter a Product name!");
   const newProd = document.createElement("tr");
@@ -50,7 +50,7 @@ function createProduct() {
                       <td class="name">
                         <span>${newProdName}</span>
                       </td>
-                      <td class="price">$<span>${newProdPrice}</span></td>
+                      <td class="price">$<span>${parseInt(newProdPrice)}</span></td>
                       <td class="quantity">
                         <input type="number" value="0" min="0" placeholder="Quantity" />
                       </td>
@@ -60,6 +60,10 @@ function createProduct() {
                       </td>`
 
   body.appendChild(newProd);
+  // clear form inputs
+  document.querySelector('#new-prod-name').value='';
+  document.querySelector('#new-prod-price').value=0;
+
   removeBtn = newProd.querySelector(".btn-remove");
   removeBtn.addEventListener('click',removeProduct);
 }
