@@ -19,6 +19,7 @@ function calculateAll() {
   let totalPrice = 0;
   // ITERATION 2
   const products = document.querySelectorAll(".product");
+  console.log(products);
   products.forEach( product => {
     let subtotalProdPrice = updateSubtotal(product);
     totalPrice += subtotalProdPrice;
@@ -41,7 +42,26 @@ function removeProduct(event) {
 // ITERATION 5
 
 function createProduct() {
-  //... your code goes here
+  const body = document.querySelector("tbody");
+  const newProdName = document.getElementById("new-prod-name").value;
+  const newProdPrice = parseInt(document.getElementById("new-prod-price").value);
+
+  const newProd = document.createElement("tr");
+  newProd.classList.add("product");
+  newProd.innerHTML = `
+                      <td class="name">
+                        <span>${newProdName}</span>
+                      </td>
+                      <td class="price">$<span>${newProdPrice}</span></td>
+                      <td class="quantity">
+                        <input type="number" value="0" min="0" placeholder="Quantity" />
+                      </td>
+                      <td class="subtotal">$<span>0</span></td>
+                      <td class="action">
+                        <button class="btn btn-remove">Remove</button>
+                      </td>`
+
+  body.appendChild(newProd);
 }
 
 window.addEventListener('load', () => {
@@ -51,5 +71,7 @@ window.addEventListener('load', () => {
   const removeBtns = document.querySelectorAll(".btn-remove");
   removeBtns.forEach(btn => btn.addEventListener('click',removeProduct));
 
-  //... your code goes here
+  const createProductBtn = document.getElementById("create");
+  createProductBtn.addEventListener('click', createProduct);
 });
+
