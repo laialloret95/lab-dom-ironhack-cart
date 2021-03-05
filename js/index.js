@@ -46,6 +46,7 @@ function createProduct() {
   const newProdName = document.getElementById("new-prod-name").value;
   const newProdPrice = parseInt(document.getElementById("new-prod-price").value);
 
+  if(newProdName.length === 0) return alert("You didn't enter a Product name!");
   const newProd = document.createElement("tr");
   newProd.classList.add("product");
   newProd.innerHTML = `
@@ -62,6 +63,8 @@ function createProduct() {
                       </td>`
 
   body.appendChild(newProd);
+  removeBtn = newProd.querySelector(".btn-remove");
+  removeBtn.addEventListener('click',removeProduct);
 }
 
 window.addEventListener('load', () => {
