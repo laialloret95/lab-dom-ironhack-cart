@@ -1,5 +1,4 @@
 // ITERATION 1
-
 function updateSubtotal(product) {
   const price = product.querySelector(".price span");
   const quantity = product.querySelector(".quantity input");
@@ -12,8 +11,6 @@ function updateSubtotal(product) {
   subtotal.innerText = subtotalValue;
   return subtotalValue;
 }
-
-
 
 function calculateAll() {
   let totalPrice = 0;
@@ -77,4 +74,3 @@ window.addEventListener('load', () => {
   const createProductBtn = document.getElementById("create");
   createProductBtn.addEventListener('click', createProduct);
 });
-
